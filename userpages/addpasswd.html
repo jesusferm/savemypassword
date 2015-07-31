@@ -139,7 +139,43 @@
                     <div class="cell auto-size padding20 bg-white">
                         <h1 class="text-light"> Agregar contraseñas <span class="mif-key place-right"></span></h1>
                         <hr class="thin bg-grayLighter">
-                        
+                        <form action="validar.php" method="post" data-role="validator" data-hint-mode="hint" data-hint-easing="easeOutBounce">
+                            <div class="grid padding20">
+                                <div class="row cells5">
+                                    <div class="cell colspan5">
+                                        <label>Ingresa nombre de usuario o correo electrónico</label>
+                                        <div class="input-control text full-size" data-role="input">
+                                            <span class="mif-user prepend-icon"></span>
+                                            <input id="cuentanueva" name="cuentanueva" type="text" placeholder="" data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
+                                            <span class="input-state-error mif-warning"></span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="cell colspan5">
+                                        <label>Ingresa la contraseña</label>
+                                        <div class="input-control text full-size" data-role="input">
+                                            <span class="mif-lock prepend-icon"></span>
+                                            <input id="passcuenta" name="passcuenta" type="text" placeholder="" data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
+                                            <span class="input-state-error mif-warning"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row cells5">
+                                    <div class="cell colspan5">
+                                        <label>Ingresa una descripción acerca de la cuenta a guardar</label>
+                                        <div class="input-control text full-size" data-role="input">
+                                            <span class="mif-info prepend-icon"></span>
+                                            <input id="descripcion" name="descripcion" type="text" placeholder="" data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
+                                            <span class="input-state-error mif-warning"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="margin10 place-right">
+                                <input type="reset" name="reset" value="Limpiar" class="button bg-gray button large primary">
+                                <input type="submit" name="Submit" value="Registrarse" class="button bg-pass button large primary">
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
