@@ -139,44 +139,69 @@
                     <div class="cell auto-size padding20 bg-white">
                         <h1 class="text-light"> Configuración de la cuenta <span class="mif-cogs place-right"></span></h1>
                         <hr class="thin bg-grayLighter">
-                        <button class="button primary" onclick="pushMessage('info')"><span class="mif-plus"></span> Agregar nueva...</button>
-                        <button class="button success" onclick="pushMessage('success')"><span class="mif-play"></span> Eliminar</button>
-                        <button class="button warning" onclick="pushMessage('warning')"><span class="mif-loop2"></span> Modificar</button>
-                        <button class="button alert" onclick="pushMessage('alert')">Eliminar todo</button>
-                        <hr class="thin bg-grayLighter">
-
-                        <table class="dataTable border bordered" data-role="datatable">
-                            <thead>
-                                <tr>
-                                    <td style="width: 20px"></td>
-                                    <td class="sortable-column sort-asc" style="width: 100px">ID</td>
-                                    <td class="sortable-column">Nombre usuario</td>
-                                    <td class="sortable-column">Contraseña</td>
-                                    <td class="sortable-column" style="width: 20px">Ver</td>
-                                    <td style="width: 20px">Descripción</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <label class="input-control checkbox small-check no-margin">
-                                            <input type="checkbox">
-                                            <span class="check"></span>
-                                        </label>
-                                    </td>
-                                    <td class="align-center"><a href="">1</a></td>
-                                    <td>hackme@please.com</td>
-                                    <td>holamundo1234</td>
-                                    <td class="align-center">
-                                        <label class="switch-original">
-                                            <input type="checkbox" checked>
-                                            <span class="check"></span>
-                                        </label>
-                                    </td>
-                                    <td class="align-left">Usuario del sitio hackme.please.com accedido hace un mes</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <!--Inicia seccion de actualizar información de usuario-->
+                        <form action="validar.php" method="post" data-role="validator" data-hint-mode="hint" data-hint-easing="easeOutBounce">
+                            <div class="grid padding20">
+                                <h4 class="text-light fg-blue"> Información de usuario </h4>
+                                <div class="row cells5">
+                                    <div class="cell colspan5">
+                                        <label>Nombre de usuario</label>
+                                        <div class="input-control text full-size" data-role="input">
+                                            <span class="mif-user prepend-icon"></span>
+                                            <input id="cuentanueva" name="cuentanueva" type="text" placeholder="" data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
+                                            <span class="input-state-error mif-warning"></span>
+                                        </div>
+                                    </div>
+                                    <div class="cell colspan5">
+                                        <label>Apellidos</label>
+                                        <div class="input-control text full-size" data-role="input">
+                                            <span class="mif-user prepend-icon"></span>
+                                            <input id="passcuenta" name="passcuenta" type="text" placeholder="" data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
+                                            <span class="input-state-error mif-warning"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="reset" name="reset" value="Limpiar" class="button bg-gray button large primary">
+                                <input type="submit" name="Submit" value="Actualizar" class="button bg-pass button large primary">
+                                <hr class="thin bg-grayLighter">
+                            </div>
+                        </form>
+                        <!--Fianliza seccion de actualizar información de usuario-->
+                        <!--Inicia seccion de actualizar información de la cuenta-->
+                        <form action="validar.php" method="post" data-role="validator" data-hint-mode="hint" data-hint-easing="easeOutBounce">
+                            <div class="grid padding20">
+                                <h4 class="text-light fg-blue"> Cambio de la contraseña - Nombre de usuario </h4>
+                                <div class="row cells5">
+                                    <div class="cell colspan3">
+                                        <label>Contraseña actual</label>
+                                        <div class="input-control text full-size" data-role="input">
+                                            <span class="mif-lock prepend-icon"></span>
+                                            <input id="cuentanueva" name="cuentanueva" type="password" placeholder="" data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
+                                            <span class="input-state-error mif-warning"></span>
+                                        </div>
+                                    </div>
+                                    <div class="cell colspan3">
+                                        <label>Contraseña nueva</label>
+                                        <div class="input-control text full-size" data-role="input">
+                                            <span class="mif-lock prepend-icon"></span>
+                                            <input id="cuentanueva" name="cuentanueva" type="password" placeholder="" data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
+                                            <span class="input-state-error mif-warning"></span>
+                                        </div>
+                                    </div>
+                                    <div class="cell colspan3">
+                                        <label>Repetir contraseña nueva</label>
+                                        <div class="input-control text full-size" data-role="input">
+                                            <span class="mif-lock prepend-icon"></span>
+                                            <input id="cuentanueva" name="cuentanueva" type="password" placeholder="" data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
+                                            <span class="input-state-error mif-warning"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="reset" name="reset" value="Limpiar" class="button bg-gray button large primary">
+                                <input type="submit" name="Submit" value="Actualizar" class="button bg-pass button large primary">
+                            </div>
+                        </form>
+                        <!--Fianliza seccion de actualizar información de la cuenta-->
                     </div>
                 </div>
             </div>
