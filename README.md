@@ -6,4 +6,5 @@ SaveMyPassword es un sitio web en dónde puedes guardar tus nombres de usuario y
 
 Para utilizar las funcionalidades de este sito web, necesitas registrarte.
 
-# Su link para pruebas de funcionamiento está en el link: http://savemypasswd.webcindario.com/
+# Su link para pruebas de funcionamiento está en el link:
+http://savemypasswd.webcindario.com/
