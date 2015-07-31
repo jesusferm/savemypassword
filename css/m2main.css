@@ -1,0 +1,43 @@
+.social-icons{
+	margin-top: .60rem;
+	font-size: .875rem;
+	line-height: 1.8rem;
+	display: block;
+	margin-right: 10px;
+}
+
+.selected{
+	background: #111;
+}
+
+.contenido{
+	margin-top: 50px;
+}
+/*margen del contenido de página logeado usuarios*/
+.cont-page-login{
+	margin-top: 55px;
+}
+
+/*alinea la derecha el menu*/
+.ali-der-menu{
+	margin-left: 0px;
+}
+
+.conten-descrip .row > .cell {
+    padding: 10px;
+    color: white;
+    text-align: center;
+    border: 0px #000 solid;
+}
+.tam-size-login{
+	font-size:25px;
+	height: 40px;
+}
+
+/*alineación de caja de registro*/
+.alig-cont-reg{
+	margin-right: 100px;
+	font-size:25px;
+	height: 40px;
+	width:300px;
+}
