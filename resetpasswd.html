@@ -79,7 +79,7 @@
             <!--Sección del menú de la página principal sin usuarios logados-->
             <div class="app-bar fixed-top darcula">
                 <div class="ali-der-menu span12">
-                    <a class="app-bar-element branding selected"><span class="mif-home"> SaveMyPassword </span></a>
+                    <a href="index.html" class="app-bar-element branding selected"><span class="mif-home"> SaveMyPassword </span></a>
                     <span class="app-bar-divider"></span>
                     <ul class="app-bar-menu">
                     </ul>
@@ -138,43 +138,24 @@
                         </div>
                         <div class="cell colspan2">
                             <div class="example bf-blue">
-                                <h1 class="text-light fg-green">Registrarse <span class="mif-user-plus"></span></h1>
-                                <h5 class="text-bold fg-olive"> Es gratis y lo será siempre</h5><br>
+                                <h1 class="text-light fg-red">Recuperar contraseña <span class="mif-lock"></span></h1>
                                 <form action="validar.php" method="post" data-role="validator" data-hint-mode="hint" data-hint-easing="easeOutBounce">
-                                    <div class="input-control text alig-cont-reg" style="font-size:25px; height: 40px; width:300px;">
+                                    <div class="input-control text alig-cont-reg" style="font-size:20px; height: 40px; width:300px;">
                                         <span class="mif-user prepend-icon"></span>
-                                        <input id="username" style="font-size:25px; height: 40px; width:300px;" name="username" type="text" placeholder="Nombres" data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
+                                        <input id="username" style="font-size:20px; height: 40px; width:300px;" name="username" type="text" placeholder="Usuario o correo electrónico" data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
                                         <span class="input-state-error mif-warning"></span>
                                         <span class="input-state-success mif-checkmark"></span>
                                     </div>
-                                    <br>
+                                    
+                                    
                                     <div class="input-control text alig-cont-reg" style="font-size:25px; height: 40px; width:300px;">
                                         <span class="mif-user prepend-icon"></span>
-                                        <input id="lastname" style="font-size:25px; height: 40px; width:300px;" name="lastname" type="text" placeholder="Apellidos" data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
-                                        <span class="input-state-error mif-warning"></span>
-                                    </div>
-                                    <br>
-                                    <div class="input-control text alig-cont-reg" style="font-size:25px; height: 40px; width:300px;">
-                                        <span class="mif-user prepend-icon"></span>
-                                        <input id="email" name="email" style="font-size:25px; height: 40px; width:300px;" type="text" placeholder="Correo electrónico" data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
-                                        <span class="input-state-error mif-warning"></span>
-                                    </div>
-                                    <br>
-                                    <div class="input-control password alig-cont-reg" style="font-size:25px; height: 40px; width:300px;">
-                                        <span class="mif-lock prepend-icon"></span>
-                                        <input style="font-size:25px; height: 40px; width:300px" name="pass" id="pass" type="password" value="" placeholder="Contraseña" data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
-                                        <span class="input-state-error mif-warning"></span>
-                                    </div>
-                                    <br>
-                                    <div class="input-control password alig-cont-reg" style="font-size:25px; height: 40px; width:300px;">
-                                        <span class="mif-lock prepend-icon"></span>
-                                        <input style="font-size:25px; height: 40px; width:300px" name="pass" id="pass" type="password" value="" placeholder="Repetir contraseña" data-validate-func="minlength" data-validate-arg="1" 
-                                         data-validate-hint-position="top">
+                                        <input id="email" name="email" style="font-size:20px; height: 40px; width:300px;" type="text" placeholder="Frase secreta" data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
                                         <span class="input-state-error mif-warning"></span>
                                     </div>
 
                                     <div class="margin10">
-                                        <input type="submit" name="Submit" value="Registrarse" class="button bg-pass button large primary">
+                                        <input type="submit" name="Submit" value="Cambiar" class="button bg-pass button large primary">
                                     </div>
                                 </form>
                             </div>
