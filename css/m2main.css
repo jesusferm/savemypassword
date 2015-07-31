@@ -41,3 +41,7 @@
 	height: 40px;
 	width:300px;
 }
+/*margen del contenedor de recuperación de contraseña*/
+.marg-cont-recup{
+  	margin: 1.76rem;
+}
