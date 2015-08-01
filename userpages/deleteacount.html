@@ -145,8 +145,15 @@
                                     <h4>Al eliminar tu cuenta de SaveMyPassword, también se eliminará toda información que hayas almacenado en nuestro sitio web.</h4>
                                     <h3 class="fg-crimson"> Cabe mencionar que no se te preguntará si deseas realmente eliminar tu cuenta. Al dar clic en el botón eliminar cuenta, automáticamente se eliminarán todos tus datos y se te redirigirá a la página oficial de este sitio.</h3>
                                     <br/>
-                                    <h2 class="fg-orange">Si estás seguro de eliminar tu cuenta, clic en el botón siguiente</h2>
-                                    
+                                    <h2 class="fg-red">Clic en el siguiente botón si estás seguro de eliminar tu cuenta</h2>
+                                    <form action="validar.php" method="post" data-role="validator" data-hint-mode="hint" data-hint-easing="easeOutBounce">
+                                    <div class="cell">
+                                        <label>&nbsp;</label>
+                                        <div class="input-control text ">
+                                            <input type="submit" name="Submit" value="Eliminar mi cuenta" class="button bg-orange warning large primary">
+                                        </div>
+                                    </div>
+                                </form>
                                 </div>
                             </div>
                         </div>
