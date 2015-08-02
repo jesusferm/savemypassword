@@ -13,6 +13,11 @@
 .contenido{
 	margin-top: 50px;
 }
+
+.cont-error-reg{
+	margin-top: 40px;
+}
+
 /*margen del contenido de página logeado usuarios*/
 .cont-page-login{
 	margin-top: 55px;
