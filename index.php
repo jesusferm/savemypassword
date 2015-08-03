@@ -222,7 +222,7 @@
                                     <div class="input-control text alig-cont-reg" style="font-size:25px; height: 40px; width:300px;">
                                         <span class="mif-user prepend-icon"></span>
                                         <input id="frase" name="frase" style="font-size:20px; height: 34px; width:300px;"
-                                        type="text" placeholder="Correo electrónico" data-validate-func="minlength" data-validate-arg="1"
+                                        type="text" placeholder="Frase secreta" data-validate-func="minlength" data-validate-arg="1"
                                         data-validate-hint-position="top" value="<?php if (isset($_GET["frase"])){ echo $_GET["frase"]; } ?>">
                                         <span class="input-state-error mif-warning"></span>
                                     </div>

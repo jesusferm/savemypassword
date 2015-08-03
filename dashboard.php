@@ -75,7 +75,7 @@
                 }
             })
         })
-    </script>
+        </script>
     </head>
     <body background="img/back2.jpg">
         <?php
@@ -152,21 +152,48 @@
                     <div class="cell auto-size padding20 bg-white">
                         <h1 class="text-light">Contraseñas almacenadas <span class="mif-list place-right"></span></h1>
                         <hr class="thin bg-grayLighter">
-                        <button class="button primary" onclick="pushMessage('info')"><span class="mif-plus"></span> Agregar nueva...</button>
-                        <button class="button success" onclick="pushMessage('success')"><span class="mif-play"></span> Eliminar</button>
-                        <button class="button warning" onclick="pushMessage('warning')"><span class="mif-loop2"></span> Modificar</button>
-                        <button class="button alert" onclick="pushMessage('alert')">Eliminar todo</button>
-                        <hr class="thin bg-grayLighter">
-
+                        <form action="addcuenta.php" method="post" data-role="validator" data-hint-mode="hint" data-hint-easing="easeOutBounce">
+                            <div class="grid">
+                                <div class="row cells2">
+                                    <div class="cell colspan2">
+                                        <div class="input-control text full-size" data-role="input">
+                                            <span class="mif-user prepend-icon"></span>
+                                            <input id="cuentanueva" name="cuentanueva" type="text" placeholder="Cuenta o usuario" data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
+                                            <span class="input-state-error mif-warning"></span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="cell colspan2">
+                                        <div class="input-control text full-size" data-role="input">
+                                            <span class="mif-lock prepend-icon"></span>
+                                            <input id="passcuenta" name="passcuenta" type="text" placeholder="Contraseña" data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
+                                            <span class="input-state-error mif-warning"></span>
+                                        </div>
+                                    </div>
+                                    <div class="cell colspan3">
+                                        <div class="input-control text full-size" data-role="input">
+                                            <span class="mif-info prepend-icon"></span>
+                                            <input id="descripcion" name="descripcion" type="text" placeholder="Descripción" data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
+                                            <span class="input-state-error mif-warning"></span>
+                                        </div>
+                                    </div>
+                                    <div class="cell colspan2">
+                                        <div class="input-control text full-size">
+                                            <input type="submit" name="Submit" value="Agregar cuenta" class="button bg-pass button large primary">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                         <table class="dataTable border bordered" data-role="datatable">
                             <thead>
                                 <tr>
                                     <td style="width: 20px"></td>
                                     <td class="sortable-column sort-asc" style="width: 100px">ID</td>
                                     <td class="sortable-column">Nombre usuario</td>
-                                    <td class="sortable-column">Contraseña</td>
-                                    <td class="sortable-column" style="width: 20px">Ver</td>
-                                    <td style="width: 20px">Descripción</td>
+                                    <td class="sortable-column">Descripción</td>
+                                    <td class="sortable-column" style="width: 20px">Contraseña</td>
+                                    <td style="width: 20px">¿Eliminar?</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -179,14 +206,101 @@
                                     </td>
                                     <td class="align-center"><a href="">1</a></td>
                                     <td>hackme@please.com</td>
+                                    <td>Usuario del sitio hackme.please.com accedido hace un mes</td>
                                     <td>holamundo1234</td>
                                     <td class="align-center">
-                                        <label class="switch-original">
-                                            <input type="checkbox" checked>
+                                        <a href="">Eliminar</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="input-control checkbox small-check no-margin">
+                                            <input type="checkbox">
                                             <span class="check"></span>
                                         </label>
                                     </td>
-                                    <td class="align-left">Usuario del sitio hackme.please.com accedido hace un mes</td>
+                                    <td class="align-center"><a href="">1</a></td>
+                                    <td>hackme@please.com</td>
+                                    <td>Usuario del sitio hackme.please.com accedido hace un mes</td>
+                                    <td>holamundo1234</td>
+                                    <td class="align-center">
+                                        <a href="">Eliminar</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="input-control checkbox small-check no-margin">
+                                            <input type="checkbox">
+                                            <span class="check"></span>
+                                        </label>
+                                    </td>
+                                    <td class="align-center"><a href="">1</a></td>
+                                    <td>hackme@please.com</td>
+                                    <td>Usuario del sitio hackme.please.com accedido hace un mes</td>
+                                    <td>holamundo1234</td>
+                                    <td class="align-center">
+                                        <a href="">Eliminar</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="input-control checkbox small-check no-margin">
+                                            <input type="checkbox">
+                                            <span class="check"></span>
+                                        </label>
+                                    </td>
+                                    <td class="align-center"><a href="">1</a></td>
+                                    <td>hackme@please.com</td>
+                                    <td>Usuario del sitio hackme.please.com accedido hace un mes</td>
+                                    <td>holamundo1234</td>
+                                    <td class="align-center">
+                                        <a href="">Eliminar</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="input-control checkbox small-check no-margin">
+                                            <input type="checkbox">
+                                            <span class="check"></span>
+                                        </label>
+                                    </td>
+                                    <td class="align-center"><a href="">1</a></td>
+                                    <td>hackme@please.com</td>
+                                    <td>Usuario del sitio hackme.please.com accedido hace un mes</td>
+                                    <td>holamundo1234</td>
+                                    <td class="align-center">
+                                        <a href="">Eliminar</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="input-control checkbox small-check no-margin">
+                                            <input type="checkbox">
+                                            <span class="check"></span>
+                                        </label>
+                                    </td>
+                                    <td class="align-center"><a href="">1</a></td>
+                                    <td>hackme@please.com</td>
+                                    <td>Usuario del sitio hackme.please.com accedido hace un mes</td>
+                                    <td>holamundo1234</td>
+                                    <td class="align-center">
+                                        <a href="">Eliminar</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="input-control checkbox small-check no-margin">
+                                            <input type="checkbox">
+                                            <span class="check"></span>
+                                        </label>
+                                    </td>
+                                    <td class="align-center"><a href="">1</a></td>
+                                    <td>hackme@please.com</td>
+                                    <td>Usuario del sitio hackme.please.com accedido hace un mes</td>
+                                    <td>holamundo1234</td>
+                                    <td class="align-center">
+                                        <a href="">Eliminar</a>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

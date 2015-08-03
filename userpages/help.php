@@ -106,7 +106,7 @@
                         <h2 class="text-light">Cuenta</h2>
                         <ul class="unstyled-list">
                             <li><a href="deleteacount.php" class="fg-white fg-hover-yellow"><span class="mif-security"></span> Securidad</a></li>
-                            <li><a href="../index.php" class="fg-white fg-hover-yellow"><span class="mif-exit"></span> Salir</a></li>
+                            <li><a href="../cerrarsesion.php" class="fg-white fg-hover-yellow"><span class="mif-exit"></span> Salir</a></li>
                         </ul>
                     </div>
                 </div>

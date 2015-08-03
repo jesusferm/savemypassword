@@ -48,34 +48,34 @@
             }
         </style>
         <script>
-        $(function(){
-            $(window).on('resize', function(){
-                if ($(this).width() <= 800) {
-                    $(".sidebar").addClass('compact');
-                } else {
-                    $(".sidebar").removeClass('compact');
-                }
+            $(function(){
+                $(window).on('resize', function(){
+                    if ($(this).width() <= 800) {
+                        $(".sidebar").addClass('compact');
+                    } else {
+                        $(".sidebar").removeClass('compact');
+                    }
+                });
             });
-        });
 
-        function pushMessage(t){
-            var mes = 'Info|Implement independently';
-            $.Notify({
-                caption: mes.split("|")[0],
-                content: mes.split("|")[1],
-                type: t
-            });
-        }
+            function pushMessage(t){
+                var mes = 'Info|Implement independently';
+                $.Notify({
+                    caption: mes.split("|")[0],
+                    content: mes.split("|")[1],
+                    type: t
+                });
+            }
 
-        $(function(){
-            $('.sidebar').on('click', 'li', function(){
-                if (!$(this).hasClass('active')) {
-                    $('.sidebar li').removeClass('active');
-                    $(this).addClass('active');
-                }
+            $(function(){
+                $('.sidebar').on('click', 'li', function(){
+                    if (!$(this).hasClass('active')) {
+                        $('.sidebar li').removeClass('active');
+                        $(this).addClass('active');
+                    }
+                })
             })
-        })
-    </script>
+        </script>
     </head>
     <body background="img/back2.jpg">
         <?php
@@ -87,7 +87,7 @@
             session_destroy();
             /*en caso de que la sesión sea incorrecta el mensaje de error va aquí*/
             //header('Location: index.php?inisesion=no');
-            header("Location:index.php?inisesion=no");
+            header("Location:../index.php?inisesion=no");
             exit();
         }else{/*en caso de que la sesión sea correcta*/
         ?>
@@ -106,7 +106,7 @@
                         <h2 class="text-light">Cuenta</h2>
                         <ul class="unstyled-list">
                             <li><a href="deleteacount.php" class="fg-white fg-hover-yellow"><span class="mif-security"></span> Securidad</a></li>
-                            <li><a href="../index.php" class="fg-white fg-hover-yellow"><span class="mif-exit"></span> Salir</a></li>
+                            <li><a href="../cerrarsesion.php" class="fg-white fg-hover-yellow"><span class="mif-exit"></span> Salir</a></li>
                         </ul>
                     </div>
                 </div>
@@ -153,15 +153,28 @@
                         <h1 class="text-light"> Configuración de la cuenta <span class="mif-cogs place-right"></span></h1>
                         <hr class="thin bg-grayLighter">
                         <!--Inicia seccion de actualizar información de usuario-->
-                        <form action="validar.php" method="post" data-role="validator" data-hint-mode="hint" data-hint-easing="easeOutBounce">
+                        <form action="actnomuser.php" method="post" data-role="validator"
+                        data-hint-mode="hint" data-hint-easing="easeOutBounce">
                             <div class="grid">
                                 <h4 class="text-light fg-blue"> Información de usuario </h4>
+                                <?php
+                                    if (isset($_GET["au"])){
+                                        if($_GET["au"]=="0"){
+                                            echo "<h5 class=\"fg-red\">Ha habido un error en la actualización.</h5>";
+                                        }
+                                        if($_GET["au"]=="1"){
+                                            echo "<h5 class=\"fg-green\">El nombre del usuario ha sido actualizada.</h5>";
+                                        }
+                                    }
+                                ?>
                                 <div class="row cells5">
                                     <div class="cell colspan3">
                                         <label>Nombre de usuario</label>
                                         <div class="input-control text full-size" data-role="input">
                                             <span class="mif-user prepend-icon"></span>
-                                            <input id="cuentanueva" name="cuentanueva" type="text" placeholder="" data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
+                                            <input id="nomuser" name="nomuser" type="text" placeholder=""
+                                            data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top"
+                                            value="<?php echo ($_SESSION['nomuser']); ?>">
                                             <span class="input-state-error mif-warning"></span>
                                         </div>
                                     </div>
@@ -169,7 +182,9 @@
                                         <label>Apellidos</label>
                                         <div class="input-control text full-size" data-role="input">
                                             <span class="mif-user prepend-icon"></span>
-                                            <input id="passcuenta" name="passcuenta" type="text" placeholder="" data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
+                                            <input id="apuser" name="apuser" type="text" placeholder=""
+                                            data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top"
+                                            value="<?php echo ($_SESSION['apuser']); ?>">
                                             <span class="input-state-error mif-warning"></span>
                                         </div>
                                     </div>
@@ -184,16 +199,32 @@
                         </form>
                         <hr class="thin bg-grayLighter">
                         <!--Fianliza seccion de actualizar información de usuario-->
-                        <!--Inicia seccion de actualizar información de la cuenta-->
-                        <form action="validar.php" method="post" data-role="validator" data-hint-mode="hint" data-hint-easing="easeOutBounce">
+                        <!--Inicia seccion de actualizar contraseña-->
+                        <form action="actpass.php" method="post" data-role="validator" data-hint-mode="hint" data-hint-easing="easeOutBounce">
                             <div class="grid">
                                 <h4 class="text-light fg-green"> Cambio de la contraseña</h4>
+                                <?php
+                                    if (isset($_GET["p"])){
+                                        if($_GET["p"]=="0"){
+                                            echo "<h5 class=\"fg-red\">La contraseña actual no es correcta y las contraseñas nuevas no son iguales.</h5>";
+                                        }
+                                        if($_GET["p"]=="1"){
+                                            echo "<h5 class=\"fg-red\">La contraseña actual no es correcta.</h5>";
+                                        }
+                                        if($_GET["p"]=="2"){
+                                            echo "<h5 class=\"fg-red\">Las contraseñas nuevas no son iguales.</h5>";
+                                        }
+                                        if($_GET["p"]=="3"){
+                                            echo "<h5 class=\"fg-green\">La contraseña ha sido actualizada.</h5> <script> showDialog('#dialog2'); </script>";
+                                        }
+                                    }
+                                ?>
                                 <div class="row cells5">
                                     <div class="cell colspan3">
                                         <label>Contraseña actual</label>
                                         <div class="input-control text full-size" data-role="input">
                                             <span class="mif-lock prepend-icon"></span>
-                                            <input id="cuentanueva" name="cuentanueva" type="password" placeholder="" data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
+                                            <input id="passactual" name="passactual" type="password" placeholder="" data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
                                             <span class="input-state-error mif-warning"></span>
                                         </div>
                                     </div>
@@ -201,7 +232,7 @@
                                         <label>Contraseña nueva</label>
                                         <div class="input-control text full-size" data-role="input">
                                             <span class="mif-lock prepend-icon"></span>
-                                            <input id="cuentanueva" name="cuentanueva" type="password" placeholder="" data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
+                                            <input id="pass1" name="pass1" type="password" placeholder="" data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
                                             <span class="input-state-error mif-warning"></span>
                                         </div>
                                     </div>
@@ -209,7 +240,7 @@
                                         <label>Repetir contraseña nueva</label>
                                         <div class="input-control text full-size" data-role="input">
                                             <span class="mif-lock prepend-icon"></span>
-                                            <input id="cuentanueva" name="cuentanueva" type="password" placeholder="" data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
+                                            <input id="pass2" name="pass2" type="password" placeholder="" data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
                                             <span class="input-state-error mif-warning"></span>
                                         </div>
                                     </div>
@@ -225,15 +256,28 @@
                         <!--Fianliza seccion de actualizar información de la cuenta-->
                         <hr class="thin bg-grayLighter">
                         <!--Inicia seccion de actualizar información de la cuenta-->
-                        <form action="validar.php" method="post" data-role="validator" data-hint-mode="hint" data-hint-easing="easeOutBounce">
+                        <form action="actfrase.php" method="post" data-role="validator" data-hint-mode="hint"
+                        data-hint-easing="easeOutBounce">
                             <div class="grid">
                                 <h4 class="text-light fg-orange"> Establecer frase secreta</h4>
+                                <?php
+                                    if (isset($_GET["fr"])){
+                                        if($_GET["fr"]=="0"){
+                                            echo "<h5 class=\"fg-red\">Ha habido un error en la actualización.</h5>";
+                                        }
+                                        if($_GET["fr"]=="1"){
+                                            echo "<h5 class=\"fg-green\">La frase secreta ha sido actualizada.</h5>";
+                                        }
+                                    }
+                                ?>
                                 <div class="row cells5">
                                     <div class="cell colspan3">
                                         <label>Frase secreta actual</label>
                                         <div class="input-control text full-size" data-role="input">
                                             <span class="mif-file-binary prepend-icon"></span>
-                                            <input id="cuentanueva" name="cuentanueva" type="text" placeholder="" data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
+                                            <input id="frase" name="frase" type="text" placeholder=""
+                                            data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top"
+                                            value="<?php echo ($_SESSION['frase']); ?>">
                                             <span class="input-state-error mif-warning"></span>
                                         </div>
                                     </div>

@@ -87,7 +87,7 @@
             session_destroy();
             /*en caso de que la sesión sea incorrecta el mensaje de error va aquí*/
             //header('Location: index.php?inisesion=no');
-            header("Location:index.php?inisesion=no");
+            header("Location:../index.php?inisesion=no");
             exit();
         }else{/*en caso de que la sesión sea correcta*/
         ?>
@@ -106,7 +106,7 @@
                         <h2 class="text-light">Cuenta</h2>
                         <ul class="unstyled-list">
                             <li><a href="deleteacount.php" class="fg-white fg-hover-yellow"><span class="mif-security"></span> Securidad</a></li>
-                            <li><a href="../index.php" class="fg-white fg-hover-yellow"><span class="mif-exit"></span> Salir</a></li>
+                            <li><a href="../cerrarsesion.php" class="fg-white fg-hover-yellow"><span class="mif-exit"></span> Salir</a></li>
                         </ul>
                     </div>
                 </div>
@@ -152,7 +152,17 @@
                     <div class="cell auto-size padding20 bg-white">
                         <h1 class="text-light"> Agregar contraseñas <span class="mif-key place-right"></span></h1>
                         <hr class="thin bg-grayLighter">
-                        <form action="validar.php" method="post" data-role="validator" data-hint-mode="hint" data-hint-easing="easeOutBounce">
+                        <?php
+                            if (isset($_GET["ad"])){
+                                if($_GET["ad"]=="0"){
+                                    echo "<h5 class=\"fg-red\">Ha habido un error en la actualización.</h5>";
+                                }
+                                if($_GET["ad"]=="1"){
+                                    echo "<h5 class=\"fg-green\">La cuenta ha sido agregada.</h5>";
+                                }
+                            }
+                        ?>
+                        <form action="addcuenta.php" method="post" data-role="validator" data-hint-mode="hint" data-hint-easing="easeOutBounce">
                             <div class="grid padding20">
                                 <div class="row cells5">
                                     <div class="cell colspan5">

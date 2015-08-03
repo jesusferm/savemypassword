@@ -18,13 +18,14 @@
             $_SESSION['useracount'] = $cuentauser;
             $_SESSION['userpass'] =  $passwroduser;
             /*realiza una consulta a mysql, extrayendo el nombre y apellido, de acuerdo al  nombre de usuario dado*/
-            $result=mysql_query("select nomuser, apuser, fraseuser from usuarios where cuentauser='".$cuentauser."';", $conexion);
+            $result=mysql_query("select nomuser, apuser, fraseuser, iduser from usuarios where cuentauser='".$cuentauser."';", $conexion);
             while ($fila=mysql_fetch_array($result)) {
                 /*extrae el nombre y el apellido y lo concatena en la variable global de sesión nomuser, para poder acceder a ella
                 desde cualquier sección*/
                 $_SESSION['nomuser'] = $fila["nomuser"];
                 $_SESSION['apuser'] = $fila["apuser"];
                 $_SESSION['frase'] = $fila["fraseuser"];
+                $_SESSION['iduser'] = $fila["iduser"];
             }
             header('Location:dashboard.php');
         }else{
