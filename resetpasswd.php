@@ -138,26 +138,64 @@
                         </div>
                         <div class="cell colspan2">
                             <div class="example bf-blue">
-                                <br/>
                                 <h1 class="text-light fg-red">Recuperar contraseña <span class="mif-lock"></span></h1>
-                                <br/>
-                                <h4 class="fg-olive">Ingresa la siguiente información para continuar</h4>
-                                <br/>
-                                <form action="validar.php" method="post" data-role="validator" data-hint-mode="hint" data-hint-easing="easeOutBounce">
+                                <form action="recupcuenta.php" method="post" data-role="validator" data-hint-mode="hint" data-hint-easing="easeOutBounce">
+                                    <?php
+                                        include("config.php"); /*Archivos de configuración de la bases de datos*/
+                                        if (isset($_GET["ur"])){
+                                            if($_GET["ur"]=="0"){
+                                                echo "<span class=\"fg-red\">El nombre de usario no existe</span>";
+                                            }
+                                        }
+                                        if (isset($_GET["act"])){
+                                            if($_GET["act"]=="1"){
+                                                echo "<span class=\"fg-green\">La contraseña ha sido actualizada.</span>";
+                                            }
+                                        }
+                                    ?>
                                     <div class="input-control text alig-cont-reg" style="font-size:20px; height: 40px; width:300px;">
                                         <span class="mif-user prepend-icon"></span>
-                                        <input id="username" style="font-size:20px; height: 40px; width:300px;" name="username" type="text" placeholder="Usuario o correo electrónico" data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
+                                        <input id="username" style="font-size:20px; height: 40px; width:300px;" name="username" type="text"
+                                        placeholder="Usuario o correo electrónico" data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
                                         <span class="input-state-error mif-warning"></span>
-                                        <span class="input-state-success mif-checkmark"></span>
                                     </div>
+                                    <?php
+                                        if (isset($_GET["fr"])){
+                                            if($_GET["fr"]=="0"){
+                                                echo "<span class=\"fg-red\">La frase secreta no es correcta.</span>";
+                                            }
+                                        }
+                                    ?>
                                     <div class="input-control text alig-cont-reg" style="font-size:25px; height: 40px; width:300px;">
                                         <span class="mif-user prepend-icon"></span>
-                                        <input id="email" name="email" style="font-size:20px; height: 40px; width:300px;" type="text" placeholder="Frase secreta" data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
+                                        <input id="frase" name="frase" style="font-size:20px; height: 40px; width:300px;" type="text"
+                                        placeholder="Frase secreta" data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
                                         <span class="input-state-error mif-warning"></span>
-                                    </div>                                    
+                                    </div>
+                                    <?php
+                                        if (isset($_GET["ps"])){
+                                            if($_GET["ps"]=="0"){
+                                                echo "<span class=\"fg-red\">Las contraseñas no coinciden.</span>";
+                                            }
+                                        }
+                                    ?>
+                                    <div class="input-control text alig-cont-reg">
+                                        <span class="mif-lock prepend-icon"></span>
+                                        <input type="password" id="passreset1" name="passreset1" style="font-size:20px; height: 40px; width:300px;"
+                                        data-validate-func="minlength" placeholder="Contraseña nueva"
+                                        data-validate-arg="1" data-validate-hint-position="top">
+                                        <span class="input-state-error mif-warning"></span>
+                                    </div>
+                                    <div class="input-control text alig-cont-reg">
+                                        <span class="mif-lock prepend-icon"></span>
+                                        <input type="password" id="passreset2" name="passreset2" style="font-size:20px; height: 40px; width:300px;"
+                                        data-validate-func="minlength" placeholder="Repetir contraseña nueva"
+                                        data-validate-arg="1" data-validate-hint-position="top">
+                                        <span class="input-state-error mif-warning"></span>
+                                    </div>
                                     <div class="marg-cont-recup">
-                                        <a href="index.php" class="fg-orange"> Cancelar </a> 
-                                        <input style="margin-left:35px;" type="submit" name="Submit" value="Cambiar" class="button bg-green success large primary">
+                                        <a href="index.php" class="fg-orange"> Ir a inicio </a> 
+                                        <input style="margin-left:35px;" type="submit" name="Submit" value="Recuperar" class="button bg-green success large primary">
                                     </div>
                                 </form>
                             </div>

@@ -31,7 +31,7 @@
         }else{
             $_SESSION['usuario']="";
             $_SESSION['pass']="";
-            header('Location:index.php?inisesion=no');
+            header('Location:index.php?inisesion=noid');
             exit();
         }
     }

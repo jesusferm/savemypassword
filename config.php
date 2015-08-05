@@ -1,8 +1,8 @@
 <?php
-    $host="localhost";
-    $user_name="root";
-    $password="";
-    $db="savemypassword";
+    $host="servidor";
+    $user_name="usuario";
+    $password="contraseña";
+    $db="basedatos";
 
     define("DB",$db);
     define("HOST",$host);

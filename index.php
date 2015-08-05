@@ -141,6 +141,11 @@
                                         echo "<span class=\"fg-orange\"> Por favor inice sesión </span>";
                                     }
                                 }
+                                if (isset($_GET["inisesion"])){
+                                    if($_GET["inisesion"]=="noid"){
+                                        echo "<span class=\"fg-orange\"> Usuario o contraseña incorrectos. </span>";
+                                    }
+                                }
                             ?>
                         </div>
                     </div>
