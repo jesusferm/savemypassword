@@ -152,51 +152,57 @@
                     <div class="cell auto-size padding20 bg-white">
                         <h1 class="text-light"> Moficar contraseñas <span class="mif-search place-right"></span></h1>
                         <hr class="thin bg-grayLighter">
+                            <?php
+                            $conexion = mysql_connect(HOST, USERNAME,PASSWORD) or die("No se pudo conectar con el servidor");
+                            mysql_select_db(DB, $conexion) or die("No se pudo conectar con la base de datos, revisar configuración.");
+                            
 
-                        <table class="dataTable border bordered" data-role="datatable">
-                            <thead>
-                                <tr>
-                                    <td style="width: 20px"></td>
-                                    <td class="sortable-column sort-asc" style="width: 100px">ID</td>
-                                    <td class="sortable-column">Nombre usuario</td>
-                                    <td class="sortable-column">Descripción</td>
-                                    <td class="sortable-column" style="width: 20px">Contraseña</td>
-                                    <td style="width: 20px">¿Modificar?</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $conexion = mysql_connect(HOST, USERNAME,PASSWORD) or die("No se pudo conectar con el servidor");
-                                mysql_select_db(DB, $conexion) or die("No se pudo conectar con la base de datos, revisar configuración.");
-                                
-                                $result=mysql_query("select * from passwords where iduser=".$_SESSION['iduser']." and activated=0;",$conexion);
+                            $result=mysql_query("select * from passwords where iduser=".$_SESSION['iduser']." and activated=0;",$conexion);
 
-                                if ($row=mysql_num_rows($result)){
-                                    $i=1;
-                                    while($fila=mysql_fetch_array($result)){
-                                ?> 
-                                <tr>
-                                    <td>
-                                        <label class="input-control checkbox small-check no-margin">
-                                            <input type="checkbox">
-                                            <span class="check"></span>
-                                        </label>
-                                    </td>
-                                    <td class="align-center"><a href=""><?php echo "$i"; ?></a></td>
-                                    <td><?php echo $fila['nomcuenta']; ?></td>
-                                    <td><?php echo $fila['descripcuenta']; ?></td>
-                                    <td><?php echo $fila['passcuenta']; ?></td>
-                                    <td class="align-center">
-                                        <a href="actcountpasswd.php?<?php echo 'id='.$_SESSION['iduser'].'&cu='.$fila['nomcuenta'].'&pa='.$fila['passcuenta'].'&de='.$fila['descripcuenta'] ?>">Modificar</a>
-                                    </td>
-                                </tr>
-                                <?php
-                                        $i++;
-                                    }
+                            /*if ($row=mysql_num_rows($result)){
+                                while($fila=mysql_fetch_array($result)){
+                                    echo $fila['passcuenta'];
                                 }
-                                ?>
-                            </tbody>
-                        </table>
+                            }*/
+                            ?>
+                            <form action="addcuenta.php" method="post" data-role="validator" data-hint-mode="hint" data-hint-easing="easeOutBounce">
+                            <div class="grid padding20">
+                                <div class="row cells5">
+                                    <div class="cell colspan5">
+                                        <label>Ingresa nombre de usuario o correo electrónico</label>
+                                        <div class="input-control text full-size" data-role="input">
+                                            <span class="mif-user prepend-icon"></span>
+                                            <input id="cuentanueva" name="cuentanueva" type="text" value="<?php echo $_GET['cu'] ?>"
+                                            data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
+                                            <span class="input-state-error mif-warning"></span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="cell colspan5">
+                                        <label>Ingresa la contraseña</label>
+                                        <div class="input-control text full-size" data-role="input">
+                                            <span class="mif-lock prepend-icon"></span>
+                                            <input id="passcuenta" name="passcuenta" type="text" value="<?php echo $_GET['pa'] ?>"
+                                            data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
+                                            <span class="input-state-error mif-warning"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row cells5">
+                                    <div class="cell colspan5">
+                                        <label>Ingresa una descripción acerca de la cuenta a guardar</label>
+                                        <div class="input-control text full-size" data-role="input">
+                                            <span class="mif-info prepend-icon"></span>
+                                            <input id="descripcion" name="descripcion" type="text" value="<?php echo $_GET['de'] ?>" 
+                                            data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
+                                            <span class="input-state-error mif-warning"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="modifypasswd.php" class="fg-orange">Cancelar</a>
+                                <input type="submit" name="Submit" value="Actualizar" class="button bg-green success large primary">
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
