@@ -108,7 +108,7 @@
                                     </div>
                                     <div class="form-actions">
                                         <input type="reset" name="reset" value="Limpiar" class="button bg-olive button large primary">
-                                        <input type="submit" name="Submit" value="Guardar" class="button bg-green button large primary">
+                                        <input type="submit" name="Submit" value="Iniciar" class="button bg-green button large primary">
                                     </div>
                                     <a href="resetpasswd.php" class="fg-orange">¿Contraseña olvidada?</a>
                                 </form>
