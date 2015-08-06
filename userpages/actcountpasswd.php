@@ -153,26 +153,16 @@
                         <h1 class="text-light"> Moficar contraseñas <span class="mif-search place-right"></span></h1>
                         <hr class="thin bg-grayLighter">
                             <?php
-                            $conexion = mysql_connect(HOST, USERNAME,PASSWORD) or die("No se pudo conectar con el servidor");
-                            mysql_select_db(DB, $conexion) or die("No se pudo conectar con la base de datos, revisar configuración.");
-                            
-
-                            $result=mysql_query("select * from passwords where iduser=".$_SESSION['iduser']." and activated=0;",$conexion);
-
-                            /*if ($row=mysql_num_rows($result)){
-                                while($fila=mysql_fetch_array($result)){
-                                    echo $fila['passcuenta'];
-                                }
-                            }*/
+                                $_SESSION['oldcount']=$_GET['cu'];
                             ?>
-                            <form action="addcuenta.php" method="post" data-role="validator" data-hint-mode="hint" data-hint-easing="easeOutBounce">
+                            <form action="actcpass.php" method="post" data-role="validator" data-hint-mode="hint" data-hint-easing="easeOutBounce">
                             <div class="grid padding20">
                                 <div class="row cells5">
                                     <div class="cell colspan5">
-                                        <label>Ingresa nombre de usuario o correo electrónico</label>
+                                        <label>Correo electrónico</label>
                                         <div class="input-control text full-size" data-role="input">
                                             <span class="mif-user prepend-icon"></span>
-                                            <input id="cuentanueva" name="cuentanueva" type="text" value="<?php echo $_GET['cu'] ?>"
+                                            <input name="cuentanueva" readonly type="text" value="<?php echo $_GET['cu'] ?>"
                                             data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
                                             <span class="input-state-error mif-warning"></span>
                                         </div>
@@ -182,7 +172,7 @@
                                         <label>Ingresa la contraseña</label>
                                         <div class="input-control text full-size" data-role="input">
                                             <span class="mif-lock prepend-icon"></span>
-                                            <input id="passcuenta" name="passcuenta" type="text" value="<?php echo $_GET['pa'] ?>"
+                                            <input name="passcuenta" type="text" value="<?php echo $_GET['pa'] ?>"
                                             data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
                                             <span class="input-state-error mif-warning"></span>
                                         </div>
@@ -193,7 +183,7 @@
                                         <label>Ingresa una descripción acerca de la cuenta a guardar</label>
                                         <div class="input-control text full-size" data-role="input">
                                             <span class="mif-info prepend-icon"></span>
-                                            <input id="descripcion" name="descripcion" type="text" value="<?php echo $_GET['de'] ?>" 
+                                            <input name="descripcion" type="text" value="<?php echo $_GET['de'] ?>" 
                                             data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
                                             <span class="input-state-error mif-warning"></span>
                                         </div>

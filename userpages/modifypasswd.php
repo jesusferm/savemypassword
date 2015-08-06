@@ -187,7 +187,7 @@
                                     <td><?php echo $fila['descripcuenta']; ?></td>
                                     <td><?php echo $fila['passcuenta']; ?></td>
                                     <td class="align-center">
-                                        <a href="actcountpasswd.php?<?php echo 'id='.$_SESSION['iduser'].'&cu='.$fila['nomcuenta'].'&pa='.$fila['passcuenta'].'&de='.$fila['descripcuenta'] ?>">Modificar</a>
+                                        <a href="actcountpasswd.php?<?php echo 'cu='.$fila['nomcuenta'].'&pa='.$fila['passcuenta'].'&de='.$fila['descripcuenta'] ?>">Modificar</a>
                                     </td>
                                 </tr>
                                 <?php
