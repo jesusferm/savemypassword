@@ -219,7 +219,7 @@
                                     <td><?php echo $fila['descripcuenta']; ?></td>
                                     <td><?php echo $fila['passcuenta']; ?></td>
                                     <td class="align-center">
-                                        <a href="delcount.php?<?php echo 'id='.$_SESSION['iduser'].'&cu='.$fila['nomcuenta']; ?>">Eliminar</a>
+                                        <a href="userpages/delcount.php?<?php echo 'id='.$_SESSION['iduser'].'&cu='.$fila['nomcuenta']; ?>">Eliminar</a>
                                     </td>
                                 </tr>
                                 <?php
