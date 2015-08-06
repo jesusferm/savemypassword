@@ -152,7 +152,7 @@
                     <div class="cell auto-size padding20 bg-white">
                         <h1 class="text-light">Contraseñas almacenadas <span class="mif-list place-right"></span></h1>
                         <hr class="thin bg-grayLighter">
-                        <form action="addcuenta.php" method="post" data-role="validator" data-hint-mode="hint" data-hint-easing="easeOutBounce">
+                        <form action="userpages/addacountfrommain.php" method="post" data-role="validator" data-hint-mode="hint" data-hint-easing="easeOutBounce">
                             <div class="grid">
                                 <div class="row cells2">
                                     <div class="cell colspan2">
@@ -197,6 +197,16 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php
+                                $conexion = mysql_connect(HOST, USERNAME,PASSWORD) or die("No se pudo conectar con el servidor");
+                                mysql_select_db(DB, $conexion) or die("No se pudo conectar con la base de datos, revisar configuración.");
+                                
+                                $result=mysql_query("select * from passwords where iduser=".$_SESSION['iduser']." and activated=0;",$conexion);
+
+                                if ($row=mysql_num_rows($result)){
+                                    $i=1;
+                                    while($fila=mysql_fetch_array($result)){
+                                ?> 
                                 <tr>
                                     <td>
                                         <label class="input-control checkbox small-check no-margin">
@@ -204,104 +214,19 @@
                                             <span class="check"></span>
                                         </label>
                                     </td>
-                                    <td class="align-center"><a href="">1</a></td>
-                                    <td>hackme@please.com</td>
-                                    <td>Usuario del sitio hackme.please.com accedido hace un mes</td>
-                                    <td>holamundo1234</td>
+                                    <td class="align-center"><a href=""><?php echo "$i"; ?></a></td>
+                                    <td><?php echo $fila['nomcuenta']; ?></td>
+                                    <td><?php echo $fila['descripcuenta']; ?></td>
+                                    <td><?php echo $fila['passcuenta']; ?></td>
                                     <td class="align-center">
-                                        <a href="">Eliminar</a>
+                                        <a href="delcount.php?<?php echo 'id='.$_SESSION['iduser'].'&cu='.$fila['nomcuenta']; ?>">Eliminar</a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <label class="input-control checkbox small-check no-margin">
-                                            <input type="checkbox">
-                                            <span class="check"></span>
-                                        </label>
-                                    </td>
-                                    <td class="align-center"><a href="">1</a></td>
-                                    <td>hackme@please.com</td>
-                                    <td>Usuario del sitio hackme.please.com accedido hace un mes</td>
-                                    <td>holamundo1234</td>
-                                    <td class="align-center">
-                                        <a href="">Eliminar</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <label class="input-control checkbox small-check no-margin">
-                                            <input type="checkbox">
-                                            <span class="check"></span>
-                                        </label>
-                                    </td>
-                                    <td class="align-center"><a href="">1</a></td>
-                                    <td>hackme@please.com</td>
-                                    <td>Usuario del sitio hackme.please.com accedido hace un mes</td>
-                                    <td>holamundo1234</td>
-                                    <td class="align-center">
-                                        <a href="">Eliminar</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <label class="input-control checkbox small-check no-margin">
-                                            <input type="checkbox">
-                                            <span class="check"></span>
-                                        </label>
-                                    </td>
-                                    <td class="align-center"><a href="">1</a></td>
-                                    <td>hackme@please.com</td>
-                                    <td>Usuario del sitio hackme.please.com accedido hace un mes</td>
-                                    <td>holamundo1234</td>
-                                    <td class="align-center">
-                                        <a href="">Eliminar</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <label class="input-control checkbox small-check no-margin">
-                                            <input type="checkbox">
-                                            <span class="check"></span>
-                                        </label>
-                                    </td>
-                                    <td class="align-center"><a href="">1</a></td>
-                                    <td>hackme@please.com</td>
-                                    <td>Usuario del sitio hackme.please.com accedido hace un mes</td>
-                                    <td>holamundo1234</td>
-                                    <td class="align-center">
-                                        <a href="">Eliminar</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <label class="input-control checkbox small-check no-margin">
-                                            <input type="checkbox">
-                                            <span class="check"></span>
-                                        </label>
-                                    </td>
-                                    <td class="align-center"><a href="">1</a></td>
-                                    <td>hackme@please.com</td>
-                                    <td>Usuario del sitio hackme.please.com accedido hace un mes</td>
-                                    <td>holamundo1234</td>
-                                    <td class="align-center">
-                                        <a href="">Eliminar</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <label class="input-control checkbox small-check no-margin">
-                                            <input type="checkbox">
-                                            <span class="check"></span>
-                                        </label>
-                                    </td>
-                                    <td class="align-center"><a href="">1</a></td>
-                                    <td>hackme@please.com</td>
-                                    <td>Usuario del sitio hackme.please.com accedido hace un mes</td>
-                                    <td>holamundo1234</td>
-                                    <td class="align-center">
-                                        <a href="">Eliminar</a>
-                                    </td>
-                                </tr>
+                                <?php
+                                        $i++;
+                                    }
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>

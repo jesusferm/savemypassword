@@ -43,6 +43,27 @@
             .icon-list li:hover [class*=mif-] {
                 color: #fff;
             }
+            input:required:invalid, input:focus:invalid {
+                background-image: url(img/invalid.png);
+                background-position: right top;
+                background-repeat: no-repeat;
+            }
+            input:required:valid {
+                background-image: url(img/valid.png);
+                background-position: right top;
+                background-repeat: no-repeat;
+            }
+            input:required:invalid, input:focus:invalid, textarea:required:invalid, textarea:focus:invalid {
+                background-image: url('img/invalid.png');
+                background-position: right top;
+                background-repeat: no-repeat;
+                box-shadow: none;
+            }
+            input:required:valid, textarea:required:valid {
+                background-image: url('img/valid.png');
+                background-position: right top;
+                background-repeat: no-repeat;
+            }
         </style>
         <script>
         $(function(){
@@ -93,7 +114,7 @@
                         <div class="app-bar-drop-container place-right" data-role="dropdown" data-no-close="true">
                             <div class="padding20">
                                 <!-- form action="validar.php" method="post" data-role="validator" data-hint-mode="hint" data-hint-easing="easeOutBounce" -->
-                                <form action="dashboard.php" method="post" data-role="validator" data-hint-mode="hint" data-hint-easing="easeOutBounce">
+                                <form action="validaruser.php" method="post" data-role="validator" data-hint-mode="hint" data-hint-easing="easeOutBounce">
                                     <h4 class="text-light"> <span class="mif-enter"></span> Iniciar sesión...</h4>
                                     <div class="input-control text">
                                         <span class="mif-user prepend-icon"></span>
@@ -102,7 +123,7 @@
                                     </div>
                                     <div class="input-control text">
                                         <span class="mif-lock prepend-icon"></span>
-                                        <input type="password" id="password1" name="password1" data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
+                                        <input type="password" id="passuser1" name="passuser1" data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
                                         <span class="input-state-error mif-warning"></span>
                                     </div>
                                     <div class="form-actions">
@@ -156,7 +177,7 @@
                                     <div class="input-control text alig-cont-reg" style="font-size:20px; height: 40px; width:300px;">
                                         <span class="mif-user prepend-icon"></span>
                                         <input id="username" style="font-size:20px; height: 40px; width:300px;" name="username" type="text"
-                                        placeholder="Usuario o correo electrónico" data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
+                                        placeholder="Cuenta de usuario" data-validate-func="minlength" data-validate-arg="1" data-validate-hint-position="top">
                                         <span class="input-state-error mif-warning"></span>
                                     </div>
                                     <?php
@@ -179,23 +200,27 @@
                                             }
                                         }
                                     ?>
-                                    <div class="input-control text alig-cont-reg">
+                                    <div class="input-control text alig-cont-reg" style="font-size:20px; height: 40px; width:300px;">
                                         <span class="mif-lock prepend-icon"></span>
                                         <input type="password" id="passreset1" name="passreset1" style="font-size:20px; height: 40px; width:300px;"
                                         data-validate-func="minlength" placeholder="Contraseña nueva"
-                                        data-validate-arg="1" data-validate-hint-position="top">
+                                        data-validate-arg="1" data-validate-hint-position="top" required onchange="
+                  this.setCustomValidity(this.validity.patternMismatch ? this.title : '');
+                  if(this.checkValidity()) form.passreset2.pattern = this.value;">
                                         <span class="input-state-error mif-warning"></span>
                                     </div>
-                                    <div class="input-control text alig-cont-reg">
+                                    <div class="input-control text alig-cont-reg" style="font-size:20px; height: 40px; width:300px;">
                                         <span class="mif-lock prepend-icon"></span>
                                         <input type="password" id="passreset2" name="passreset2" style="font-size:20px; height: 40px; width:300px;"
                                         data-validate-func="minlength" placeholder="Repetir contraseña nueva"
-                                        data-validate-arg="1" data-validate-hint-position="top">
+                                        data-validate-arg="1" data-validate-hint-position="top" required onchange="
+                  this.setCustomValidity(this.validity.patternMismatch ? this.title : '');">
                                         <span class="input-state-error mif-warning"></span>
                                     </div>
                                     <div class="marg-cont-recup">
                                         <a href="index.php" class="fg-orange"> Ir a inicio </a> 
-                                        <input style="margin-left:35px;" type="submit" name="Submit" value="Recuperar" class="button bg-green success large primary">
+                                        <input style="margin-left:35px;" type="submit" name="Submit" value="Recuperar"
+                                        class="button bg-green success large primary">
                                     </div>
                                 </form>
                             </div>

@@ -152,8 +152,7 @@
                                         <a href="https://github.com/jesusferm" target="_blank" class="fg-black fg-hover-blue"> <span class="mif-github mif-3x"> </a>
                                         <a href="https://mx.linkedin.com/in/merinofernando" target="_blank" class="fg-black fg-hover-blue"> <span class="mif-linkedin mif-3x"></span> </a>
                                 </div>
-                                <br/><br/>
-                                <div class="fg-dark">
+                                <div class="fg-dark align-center text-small" style="margin-top:50px;">
                                     Este sitio web ha utilizando el framework de desarrollo en HTML Metro UI CSS 3.0, desarrollado por Sergey Pimenov <a target="_blank" href="http://metroui.org.ua/">Visitar sitio web</a>
                                 </div>
 

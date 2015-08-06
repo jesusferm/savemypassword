@@ -24,6 +24,11 @@
         <script src="js/ga.js"></script>
 
         <style>
+            .notify {
+                width: 100%;
+            }
+        </style>
+        <style>
             .icon-list li {
                 width: 23%;
                 padding: .625rem;
