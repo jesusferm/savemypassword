@@ -152,11 +152,6 @@
                     <div class="cell auto-size padding20 bg-white">
                         <h1 class="text-light"> Moficar contraseñas <span class="mif-search place-right"></span></h1>
                         <hr class="thin bg-grayLighter">
-                        <button class="button primary" onclick="pushMessage('info')"><span class="mif-plus"></span> Agregar nueva...</button>
-                        <button class="button success" onclick="pushMessage('success')"><span class="mif-play"></span> Eliminar</button>
-                        <button class="button warning" onclick="pushMessage('warning')"><span class="mif-loop2"></span> Modificar</button>
-                        <button class="button alert" onclick="pushMessage('alert')">Eliminar todo</button>
-                        <hr class="thin bg-grayLighter">
 
                         <table class="dataTable border bordered" data-role="datatable">
                             <thead>
@@ -164,12 +159,22 @@
                                     <td style="width: 20px"></td>
                                     <td class="sortable-column sort-asc" style="width: 100px">ID</td>
                                     <td class="sortable-column">Nombre usuario</td>
-                                    <td class="sortable-column">Contraseña</td>
-                                    <td class="sortable-column" style="width: 20px">Ver</td>
-                                    <td style="width: 20px">Descripción</td>
+                                    <td class="sortable-column">Descripción</td>
+                                    <td class="sortable-column" style="width: 20px">Contraseña</td>
+                                    <td style="width: 20px">¿Modificar?</td>
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php
+                                $conexion = mysql_connect(HOST, USERNAME,PASSWORD) or die("No se pudo conectar con el servidor");
+                                mysql_select_db(DB, $conexion) or die("No se pudo conectar con la base de datos, revisar configuración.");
+                                
+                                $result=mysql_query("select * from passwords where iduser=".$_SESSION['iduser']." and activated=0;",$conexion);
+
+                                if ($row=mysql_num_rows($result)){
+                                    $i=1;
+                                    while($fila=mysql_fetch_array($result)){
+                                ?> 
                                 <tr>
                                     <td>
                                         <label class="input-control checkbox small-check no-margin">
@@ -177,17 +182,19 @@
                                             <span class="check"></span>
                                         </label>
                                     </td>
-                                    <td class="align-center"><a href="">1</a></td>
-                                    <td>hackme@please.com</td>
-                                    <td>holamundo1234</td>
+                                    <td class="align-center"><a href=""><?php echo "$i"; ?></a></td>
+                                    <td><?php echo $fila['nomcuenta']; ?></td>
+                                    <td><?php echo $fila['descripcuenta']; ?></td>
+                                    <td><?php echo $fila['passcuenta']; ?></td>
                                     <td class="align-center">
-                                        <label class="switch-original">
-                                            <input type="checkbox" checked>
-                                            <span class="check"></span>
-                                        </label>
+                                        <a href="modifycount.php?<?php echo 'id='.$_SESSION['iduser'].'&cu='.$fila['nomcuenta']; ?>">Modificar</a>
                                     </td>
-                                    <td class="align-left">Usuario del sitio hackme.please.com accedido hace un mes</td>
                                 </tr>
+                                <?php
+                                        $i++;
+                                    }
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>

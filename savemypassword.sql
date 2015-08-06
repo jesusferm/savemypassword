@@ -22,14 +22,3 @@ create table passwords(
     foreign key (iduser) references usuarios(iduser),
     primary key(iduser,nomcuenta)
 );
-/*Para insertar una nueva cuenta de usuario*/
-insert into usuarios (cuentauser, passwd, typeuser, fraseuser, activated, nomuser, apuser) 
-values('hackme@please.com','holamundo',0,'',0,'Usuario Uno','Hackme');
-
-select * from usuarios;
-
-insert into passwords values(1,'usera2@gmail.com','adiosmundo@','Cuenta de gmail para hackear',0);
-select * from passwords;
-
-
-
