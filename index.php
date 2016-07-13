@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <meta name="description" content="Sitio web persoanl del bloggero M2">
         <meta name="keywords" content="HTML, CSS, JS, JavaScript,m2, linuxitos, fedora, save password, cloud passpwrod, admin password, save, password">
-        <meta name="author" content="Jesús Fernando Merino Merino and LiNuXiToS">
+        <meta name="author" content="LiNuXiToS">
 
         <link href="css/metro.css" rel="stylesheet">
         <link href="css/metro-icons.css" rel="stylesheet">
