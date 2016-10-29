@@ -4,7 +4,7 @@
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
-        <title>M2 - Save My Password</title>
+        <title>M2 - Save My Password - Linuxitos</title>
         <link REL="Shortcut Icon" HREF="img/icono.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -22,7 +22,7 @@
         <script src="js/docs.js"></script>
         <script src="js/prettify/run_prettify.js"></script>
         <script src="js/ga.js"></script>
-
+        <!--- -->
         <style>
             .notify {
                 width: 100%;
