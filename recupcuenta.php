@@ -7,7 +7,6 @@
         $pass1 = md5($_POST["passreset1"]);
         $pass2 = md5($_POST["passreset2"]);
         $userid = "";
-
         $userexist = false;
         $frasecorrect = false;
         $passiguales = false;
