@@ -1,6 +1,6 @@
 <?php
     include("config.php"); /*Archivos de configuración de la bases de datos*/
-	if ($_POST) {
+	if ($_POST){
 		/*se accede al valor de las variables, del post de esa forma*/
         $useracount = $_POST['username']; /*se obtiene el nombre de la cuenta de usuario*/
 		$frase = $_POST["frase"];
