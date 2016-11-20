@@ -3,7 +3,7 @@
         include('config.php'); /*Archivos de configuración de la bases de datos*/
         $cuentauser = $_POST['userlogin1']; /*Nombre de usuario o cuenta de usuario, correo o nombre de usuario*/
         $passwroduser = md5($_POST['passuser1']);
-        //Asignando las variables  de entorno de la bd
+        //Asignando las variables  de entorno de la bd con encriptación
 
         $conexion = mysql_connect(HOST, USERNAME,PASSWORD) or die("No se pudo conectar con el servidor");
         mysql_select_db(DB, $conexion) or die("No se pudo conectar con la base de datos, revisar configuración.");
