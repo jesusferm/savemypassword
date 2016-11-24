@@ -3,7 +3,6 @@
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <title>M2 - Save My Password</title>
@@ -13,7 +12,6 @@
         <meta name="description" content="Sitio web persoanl del bloggero M2">
         <meta name="keywords" content="HTML, CSS, JS, JavaScript,m2, linuxitos, fedora, web development">
         <meta name="author" content="Jesús Fernando Merino Merino and LiNuXiToS">
-
         <link href="css/metro.css" rel="stylesheet">
         <link href="css/metro-icons.css" rel="stylesheet">
         <!-- link href="css/docs.css" rel="stylesheet" -->

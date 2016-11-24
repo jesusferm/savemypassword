@@ -250,7 +250,7 @@
                             <div class="ali-der-menu span12">
                                 <ul class="horizontal-menu compact">
                                     <li>
-                                        <a target="_blanck" href="http://linuxgx.blogspot.mx/">&copy; 2015 SaveMyPassword - LiNuXiToS</a>
+                                        <a target="_blanck" href="http://linuxgx.blogspot.mx/">&copy; 2016 SaveMyPassword - LiNuXiToS</a>
                                     </li>
                                     <li class="place-right">
                                         <a href="privacitymain.php">

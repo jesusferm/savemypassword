@@ -164,7 +164,7 @@
                         <div class="bottom-menu-wrapper  fixed-bottom bg-white">
                         <div class="ali-der-menu span12">
                             <ul class="horizontal-menu compact">
-                                <li><a target="_blanck" href="http://linuxgx.blogspot.mx/">&copy; 2015 SaveMyPassword - LiNuXiToS</a></li>
+                                <li><a target="_blanck" href="http://linuxgx.blogspot.mx/">&copy; 2016 SaveMyPassword - LiNuXiToS</a></li>
                                 <li class="place-right"><a href="privacitymain.php"> <span class="mif-security"> Privacidad </span> </a></li>
                                 <li class="place-right"><a href="helpmain.php"> <span class="mif-help"> Ayuda </span> </a></li>
                             </ul>
