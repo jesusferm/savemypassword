@@ -1,5 +1,7 @@
 <?php
-    include("../config.php"); /*Archivos de configuración de la bases de datos*/
+    /*Archivos de configuración de la bases de datos*/
+    include("../includes/dbconfig.php");
+    include("../includes/mydbclass.php");
     header("Content-Type: text/html;charset=utf-8");
     @session_start();
     if (!isset($_SESSION['useracount'])  || (trim($_SESSION['useracount']) == '')){
@@ -17,9 +19,11 @@
             $apuser = $_POST["apuser"];
 
             /*En caso de que no haya error se actualiza la contraseña*/
-            $conexion = mysql_connect(HOST, USERNAME,PASSWORD) or die("No se pudo conectar con el servidor");
-            mysql_select_db(DB, $conexion) or die("No se pudo conectar con la base de datos, revisar configuración.");
-            $result=mysql_query("update usuarios set nomuser='".$nomuser."', apuser='".$apuser."'  WHERE cuentauser='".$log."' and iduser=".$_SESSION['iduser'].";");
+            
+            $mydb = new myDBC();
+            $guardar="update usuarios set nomuser='".$nomuser."', apuser='".$apuser."'  WHERE cuentauser='".$log."' and iduser=".$_SESSION['iduser'].";";
+            $mydb->runQuery($guardar);
+            
             $_SESSION['nomuser'] = $nomuser;
             $_SESSION['apuser'] = $apuser;
             header('Location: acount.php?au=1');

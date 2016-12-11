@@ -1,3 +1,8 @@
+<?php
+/*Archivos de configuración de la bases de datos*/
+include("includes/dbconfig.php");
+include("includes/mydbclass.php");
+?>
 <!DOCTYPE html>
 <html style="" lang="es-ES">
     <head>
@@ -77,7 +82,7 @@
     </head>
     <body background="img/back2.jpg">
         <?php
-        include("config.php"); /*Archivos de configuración de la bases de datos*/
+        //include("config.php"); /*Archivos de configuración de la bases de datos*/
         header("Content-Type: text/html;charset=utf-8");
         @session_start();
         if (!isset($_SESSION['useracount'])  || (trim($_SESSION['useracount']) == '')){
@@ -196,14 +201,22 @@
                             </thead>
                             <tbody>
                                 <?php
-                                $conexion = mysql_connect(HOST, USERNAME,PASSWORD) or die("No se pudo conectar con el servidor");
-                                mysql_select_db(DB, $conexion) or die("No se pudo conectar con la base de datos, revisar configuración.");
-                                
-                                $result=mysql_query("select * from passwords where iduser=".$_SESSION['iduser']." and activated=0;",$conexion);
+                                $mydb = new myDBC();
 
-                                if ($row=mysql_num_rows($result)){
+                                /*$conexion = mysql_connect(HOST, USERNAME,PASSWORD) or die("No se pudo conectar con el servidor");
+                                mysql_select_db(DB, $conexion) or die("No se pudo conectar con la base de datos, revisar configuración.");*/
+                                
+                                /*$result=mysql_query("select * from passwords where iduser=".$_SESSION['iduser']." and activated=0;",$conexion);*/
+
+                                $query = "select * from passwords where iduser=".$_SESSION['iduser']." and activated=0;";
+                                $total=0;
+								foreach($mydb->runQuery($query) as $row) {
+									$total=$total+1;
+								}
+								$result = $mydb->runQuery($query);
+                                if ($total>0){
                                     $i=1;
-                                    while($fila=mysql_fetch_array($result)){
+                                    foreach($mydb->runQuery($query) as $fila) {
                                 ?> 
                                 <tr>
                                     <td>

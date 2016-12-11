@@ -79,7 +79,9 @@
     </head>
     <body background="img/back2.jpg">
         <?php
-        include("../config.php"); /*Archivos de configuración de la bases de datos*/
+		/*Archivos de configuración de la bases de datos*/
+		include("../includes/dbconfig.php");
+		include("../includes/mydbclass.php");
         header("Content-Type: text/html;charset=utf-8");
         @session_start();
         if (!isset($_SESSION['useracount'])  || (trim($_SESSION['useracount']) == '')){

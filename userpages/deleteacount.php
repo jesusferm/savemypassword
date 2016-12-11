@@ -159,7 +159,7 @@
                                     <h3 class="fg-crimson"> Cabe mencionar que no se te preguntará si deseas realmente eliminar tu cuenta. Al dar clic en el botón eliminar cuenta, automáticamente se eliminarán todos tus datos y se te redirigirá a la página oficial de este sitio.</h3>
                                     <br/>
                                     <h2 class="fg-red">Clic en el siguiente botón si estás seguro de eliminar tu cuenta</h2>
-                                    <form action="validar.php" method="post" data-role="validator" data-hint-mode="hint" data-hint-easing="easeOutBounce">
+                                    <form action="delcount.php" method="post" data-role="validator" data-hint-mode="hint" data-hint-easing="easeOutBounce">
                                     <div class="cell">
                                         <label>&nbsp;</label>
                                         <div class="input-control text ">

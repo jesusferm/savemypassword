@@ -1,5 +1,7 @@
 <?php
-include("config.php"); /*Archivos de configuración de la bases de datos*/
+/*Archivos de configuración de la bases de datos*/
+include("includes/dbconfig.php");
+include("includes/mydbclass.php");
 ?>
 <!DOCTYPE html>
 <html style="" lang="es-ES">
@@ -79,8 +81,8 @@ include("config.php"); /*Archivos de configuración de la bases de datos*/
 </head>
 <body>
 	<?php
-	error_reporting(E_ALL ^ E_DEPRECATED);
-    @session_start();
+	//error_reporting(E_ALL ^ E_DEPRECATED);
+    //@session_start();
 	/*SE PREGUNTA SI HAY DATOS EN EL POST*/
 	if ($_POST) {
 		/*se accede al valor de las variables, del post de esa forma*/
@@ -93,17 +95,24 @@ include("config.php"); /*Archivos de configuración de la bases de datos*/
     
         $usernoexiste  = false;
 		$passwd        = false;
+        $mydb = new myDBC();
 
-		$conexion = mysql_connect(HOST, USERNAME,PASSWORD) or die("No se pudo conectar con el servidor");
-		mysql_select_db(DB, $conexion) or die("No se pudo conectar con la base de datos, revisar configuración.");
+		//$conexion = mysqli_connect(HOST, USERNAME,PASSWORD) or die("No se pudo conectar con el servidor");
+		//mysql_select_db(DB, $conexion) or die("No se pudo conectar con la base de datos, revisar configuración.");
 
         /*Se valida que el nombre de la cuenta no exista*/
+
+        /*
     	$usurexist = mysql_query("select cuentauser from usuarios where activated=0 and cuentauser='".$useracount."';", $conexion);
         while ($fila = mysql_fetch_array($usurexist)) {
             /*extrae el nombre y el lastnameellido y lo concatena en la variable global de sesión nomuser, para poder acceder a ella
-            desde cualquier sección*/
+            desde cualquier sección* /
             $usernoexiste = true;
-        }
+        }*/
+
+        foreach($mydb->runQuery("select cuentauser from usuarios where activated=0 and cuentauser='".$useracount."';") as $row) {
+			$usernoexiste = true;
+		}
 
         if($pass==$pass1){
             $passwd = true;
@@ -123,12 +132,17 @@ include("config.php"); /*Archivos de configuración de la bases de datos*/
         }
         /*En caso de que no exista el usuario y las contraseñas coincidan, entonces se agrega el usuario*/
         if($passwd==true && $usernoexiste == false){
-	        $result=mysql_query("insert into usuarios (cuentauser, passwd, typeuser, fraseuser, activated, nomuser, apuser) 
-                                    values('".$useracount."','".$pass."',0,'".$frase."',0,'".$username."','".$lastname."');");
-	        if ($result){
+	        
+            $sql = "insert into usuarios (cuentauser, passwd, typeuser, fraseuser, activated, nomuser, apuser) values('".$useracount."','".$pass."',0,'".$frase."',0,'".$username."','".$lastname."');";
+            $mydb->runQuery($sql);
+            /*
+            $result=mysql_query("insert into usuarios (cuentauser, passwd, typeuser, fraseuser, activated, nomuser, apuser) values('".$useracount."','".$pass."',0,'".$frase."',0,'".$username."','".$lastname."');");*/
+
+	        if ($mydb){
                 /*En caso de ser creado lo envía directo a inicio de sesión*/
 				header("Location:index.php?createuser=si");
 			}
+
 		}
 	}
 	?>

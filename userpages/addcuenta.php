@@ -1,5 +1,7 @@
 <?php
-    include("../config.php"); /*Archivos de configuración de la bases de datos*/
+    /*Archivos de configuración de la bases de datos*/
+    include("../includes/dbconfig.php");
+    include("../includes/mydbclass.php");
     header("Content-Type: text/html;charset=utf-8");
     @session_start();
     if (!isset($_SESSION['useracount'])  || (trim($_SESSION['useracount']) == '')){
@@ -18,9 +20,10 @@
             $descripcion = $_POST["descripcion"];
 
             /*En caso de que no haya error se actualiza la contraseña*/
-            $conexion = mysql_connect(HOST, USERNAME,PASSWORD) or die("No se pudo conectar con el servidor");
-            mysql_select_db(DB, $conexion) or die("No se pudo conectar con la base de datos, revisar configuración.");
-            $result=mysql_query("insert into passwords values(".$_SESSION['iduser'].",'".$cuentanueva."','".$passcuenta."','".$descripcion."',0);");
+            /*En caso de que no haya error se actualiza la contraseña*/
+            $mydb = new myDBC();
+            $guardar="insert into passwords values(".$_SESSION['iduser'].",'".$cuentanueva."','".$passcuenta."','".$descripcion."',0);";
+            $mydb->runQuery($guardar);
             header('Location: addpasswd.php?ad=1');
     	}
     }
