@@ -1,7 +1,7 @@
 # Savemypassword
 SaveMyPassword es un sitio web en dónde puedes guardar tus nombres de usuario y contraseña en la nube.
 
-# Versión 0.1.0
+# Versión 1.1.3
 SaveMyPassword es un sitio web en dónde puedes guardar tus nombres de usuario y contraseña en la nube. De tal modo que puedas acceder a ellas con una sola contraseña maestra. En este sitio puedes agregar, borrar, actualizar fácilmente todas las contraseñas y usuarios que tengas. Nunca más olvides tus contraseñas, mantenlas todas en un solo lugar.
 
 Es sitio completo la cual puede utilizarse para otros proyectos, todos los métodos, funciones, etc, no son absolutos, cualquiera puede modificarlos, siempre y cuando respetando los créditos de sus desarrollador principal.
