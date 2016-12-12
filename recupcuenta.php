@@ -1,5 +1,7 @@
 <?php
-    include("config.php"); /*Archivos de configuración de la bases de datos*/
+    /*Archivos de configuración de la bases de datos*/
+	include("includes/dbconfig.php");
+	include("includes/mydbclass.php");
 	if ($_POST){
 		/*se accede al valor de las variables, del post de esa forma*/
         $useracount = $_POST['username']; /*se obtiene el nombre de la cuenta de usuario*/
@@ -12,30 +14,20 @@
         $passiguales = false;
 
         /*Inicializando conexión a la base de datos.*/
-        $conexion = mysql_connect(HOST, USERNAME,PASSWORD) or die("No se pudo conectar con el servidor");
-        mysql_select_db(DB, $conexion) or die("No se pudo conectar con la base de datos, revisar configuración.");
+        $mydb = new myDBC();
 
-        $usurexist = mysql_query("select iduser from usuarios where activated=0 and cuentauser='".$useracount."';", $conexion);
-        while ($fila = mysql_fetch_array($usurexist)) {
-            /*extrae el nombre y el lastnameellido y lo concatena en la variable global de sesión nomuser, para poder acceder a ella
-            desde cualquier sección*/
-            $userexist = true;
-            $userid = $fila["iduser"]; /*clave primaria para poder actualizar información de contraseña*/
-        }
+        $userid = $mydb->obtenerCampo("iduser", "usuarios", " where cuentauser='".$useracount."' and fraseuser='".$frase."' and activated=0 ;");
 
-        if($userexist==true){
-            $fra = mysql_query("select fraseuser from usuarios where activated=0 and iduser=".$userid." and fraseuser='".$frase."';", $conexion);
-            while ($fila = mysql_fetch_array($fra)) {
-                /*extrae el nombre y el lastnameellido y lo concatena en la variable global de sesión nomuser, para poder acceder a ella
-                desde cualquier sección*/
-                $frasecorrect = true;
-            }
+        //$query = "select iduser from usuarios where activated=0 and cuentauser='".$useracount."';");
 
-            if($pass2==$pass1){
-                $passiguales=true;
-            }
-
-
+        if($userid!=""){
+        	$fra  = $mydb->obtenerCampo("fraseuser", "usuarios", " where iduser=".$userid." and activated=0 ;");
+			if($pass2==$pass1){
+				$passiguales=true;
+			}
+			if ($fra==$frase) {
+				$frasecorrect=true;
+			}
             if($frasecorrect==false && $passiguales==false){
                 header('Location: resetpasswd.php?fr=0&ps=0');
             }else{
@@ -46,8 +38,9 @@
                         header('Location: resetpasswd.php?ps=0');
                     }else{
                         if ($frasecorrect==true && $passiguales==true) {
-                            $result=mysql_query("update usuarios set passwd='".$pass1."'  WHERE cuentauser='".$useracount."' and iduser='".$userid."';");
-                            header('Location: resetpasswd.php?act=1');
+                            $sql = "update usuarios set passwd='".$pass1."'  WHERE cuentauser='".$useracount."' and iduser='".$userid."';";
+            				$mydb->runQuery($sql);
+            				header('Location: resetpasswd.php?act=1');
                         }
                     }
                 }
